@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFIndex", "WPFIndex\WPFIndex.csproj", "{5D2A4F6E-927A-4515-841D-3E599AA348C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D2A4F6E-927A-4515-841D-3E599AA348C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D2A4F6E-927A-4515-841D-3E599AA348C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D2A4F6E-927A-4515-841D-3E599AA348C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D2A4F6E-927A-4515-841D-3E599AA348C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D072668-2470-47E8-8EE0-8BACB38EB87F}
+	EndGlobalSection
+EndGlobal

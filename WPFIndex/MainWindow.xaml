@@ -1,0 +1,46 @@
+﻿<Window x:Class="WPFIndex.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Icon="/Icon.png"
+        Title="Calculator" Height="500" Width="400" ResizeMode="NoResize" FontFamily="Arial" FontSize="32">
+    <Grid Background="Gray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox IsReadOnly="True" Padding="10" Name="block" Grid.ColumnSpan="5" TextAlignment="Right" Background="WhiteSmoke" Margin="10" />
+        <Button Grid.Column="0" Grid.Row="1" Content="9" Click="NumberClick" />
+        <Button Grid.Column="1" Grid.Row="1" Content="8" Click="NumberClick" />
+        <Button Grid.Column="2" Grid.Row="1" Content="7" Click="NumberClick" />
+        <Button Grid.Column="0" Grid.Row="2" Content="6" Click="NumberClick" />
+        <Button Grid.Column="1" Grid.Row="2" Content="5" Click="NumberClick" />
+        <Button Grid.Column="2" Grid.Row="2" Content="4" Click="NumberClick" />
+        <Button Grid.Column="0" Grid.Row="3" Content="3" Click="NumberClick" />
+        <Button Grid.Column="1" Grid.Row="3" Content="2" Click="NumberClick" />
+        <Button Grid.Column="2" Grid.Row="3" Content="1" Click="NumberClick" />
+        <Button Grid.Column="1" Grid.Row="4" Content="0" Click="NumberClick" />
+        <Button Grid.Column="2" Grid.Row="4" Content="," Click="Comma" />
+        <Button Grid.Column="0" Grid.Row="4" Content="±" Click="ChangeSign" />
+        <Button Grid.Column="3" Grid.Row="1" Content="÷" Background="BlueViolet" Click="SignClick" />
+        <Button Grid.Column="3" Grid.Row="2" Content="×" Background="BlueViolet" Click="SignClick" />
+        <Button Grid.Column="3" Grid.Row="3" Content="-" Background="BlueViolet" Click="SignClick" />
+        <Button Grid.Column="3" Grid.Row="4" Content="+" Background="BlueViolet" Click="SignClick" />
+        <Button Grid.Column="2" Grid.Row="5" Background="ForestGreen" Content="=" Click="AddUp" />
+        <Button Grid.Column="1" Grid.Row="5" Background="Red" Content="C" Click="Clear" />
+        <Button Grid.Column="0" Grid.Row="5" Background="OrangeRed" Content="⌫" Click="Erase" />
+        <Button Grid.Column="3" Grid.Row="5" Content="%" Background="BlueViolet"  Click="SignClick" />
+    </Grid>
+</Window>
