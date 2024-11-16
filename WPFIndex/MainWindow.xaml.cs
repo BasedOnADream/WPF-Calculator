@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows;
 using System.Windows.Controls;
+using org.mariuszgromada.math.mxparser;
 
 namespace WPFIndex
 {
@@ -15,20 +16,12 @@ namespace WPFIndex
             InitializeComponent();
         }
 
-        private void NumberClick(object sender, RoutedEventArgs e)
-        {
-            block.Text += (string)(sender as Button).Content;
-        }
+        private void NumberClick(object sender, RoutedEventArgs e){block.Text += (string)(sender as Button).Content;}
+
         private void SignClick(object sender, RoutedEventArgs e) 
         {
-            if(block.Text != "" && (block.Text.Substring(block.Text.Length - 1) == "×" || block.Text.Substring(block.Text.Length - 1) == "÷" || block.Text.Substring(block.Text.Length - 1) == "-" || block.Text.Substring(block.Text.Length - 1) == "+" || block.Text.Substring(block.Text.Length - 1) == "%" || block.Text.Substring(block.Text.Length - 1) == "*" || block.Text.Substring(block.Text.Length - 1) == "/")) 
-            {
-                block.Text = block.Text.Substring(0, block.Text.Length - 1) + (string)(sender as Button).Content;
-            }
-            else 
-            {
-                block.Text += (string)(sender as Button).Content;
-            }
+            if (block.Text != "" && (block.Text.Substring(block.Text.Length - 1) == "×" || block.Text.Substring(block.Text.Length - 1) == "÷" || block.Text.Substring(block.Text.Length - 1) == "-" || block.Text.Substring(block.Text.Length - 1) == "+" || block.Text.Substring(block.Text.Length - 1) == "#" || block.Text.Substring(block.Text.Length - 1) == "!" || block.Text.Substring(block.Text.Length - 1) == "√" || block.Text.Substring(block.Text.Length - 1) == "^")) {block.Text = block.Text.Substring(0, block.Text.Length - 1) + (string)(sender as Button).Content;}
+            else {block.Text += (string)(sender as Button).Content;}
             canComma = true;
             lastSing = canSign;
             canSign = Convert.ToUInt16(block.Text.Length);
@@ -37,13 +30,15 @@ namespace WPFIndex
         {
             try 
             {
-                while(block.Text.IndexOf(",") != -1) {block.Text = block.Text.Replace(",", ".");}
-                while (block.Text.IndexOf("×") != -1) { block.Text = block.Text.Replace("×", "*"); }
-                while(block.Text.IndexOf("÷") != -1) { block.Text = block.Text.Replace("÷", "/"); }
-                if(block.Text.Substring(0,1) == "*" || block.Text.Substring(0, 1) == "×" || block.Text.Substring(0, 1) == "%" || block.Text.Substring(0, 1) == "/" || block.Text.Substring(0, 1) == "÷") { block.Text = block.Text.Substring(1); }
-                if (block.Text.Substring(block.Text.Length - 1) != "*" && block.Text.Substring(block.Text.Length - 1) != "/" && block.Text.Substring(block.Text.Length - 1) != "+" && block.Text.Substring(block.Text.Length - 1) != "-" && block.Text.Substring(block.Text.Length - 1) != "%" && block.Text.Substring(block.Text.Length - 1) != ".") { block.Text = new DataTable().Compute(block.Text, null).ToString(); }
+                while (block.Text.IndexOf(",") != -1) { block.Text = block.Text.Replace(",", "."); }
+                if (block.Text.Substring(block.Text.Length - 1) != "×" && block.Text.Substring(block.Text.Length - 1) != "÷" && block.Text.Substring(block.Text.Length - 1) != "-" && block.Text.Substring(block.Text.Length - 1) != "+" && block.Text.Substring(block.Text.Length - 1) != "#" && block.Text.Substring(block.Text.Length - 1) != "√" && block.Text.Substring(block.Text.Length - 1) != "^" && block.Text.Substring(block.Text.Length - 1) != ",") 
+                {
+                    org.mariuszgromada.math.mxparser.Expression math = new org.mariuszgromada.math.mxparser.Expression(block.Text);
+                    block.Text = Convert.ToString(math.calculate());
+                }
                 if (block.Text.IndexOf("∞") != -1) { block.Text = block.Text.Replace("∞", ""); }
-                if(block.Text.IndexOf(".") == -1) { canComma = false; }
+                if (block.Text.IndexOf("NaN") != -1) { block.Text = block.Text.Replace("NaN", ""); }
+                canComma = true;
                 canSign = 0;
             }
             catch(Exception err)
@@ -59,19 +54,19 @@ namespace WPFIndex
             lastSing = 0;
             canSign = 0;
         }
+
         private void Erase(object sender, RoutedEventArgs e) 
         {
-            if(block.Text != "" && block.Text[^1..] == ",") { canComma = true; }
-            if(block.Text != "") {block.Text = block.Text[..^1]; }
-            if(block.Text.Substring(block.Text.Length - 1) == "×" || block.Text.Substring(block.Text.Length - 1) == "÷" || block.Text.Substring(block.Text.Length - 1) == "-" || block.Text.Substring(block.Text.Length - 1) == "+" || block.Text.Substring(block.Text.Length - 1) == "%" || block.Text.Substring(block.Text.Length - 1) == "*" || block.Text.Substring(block.Text.Length - 1) == "/") { canSign = lastSing; }
+            if(block.Text != "") 
+            {
+                if (block.Text[^1..] == ",") { canComma = true; }
+                block.Text = block.Text[..^1];
+            }
         }
-        private void Comma(object sender, RoutedEventArgs e) 
-        {
-            if (canComma) {block.Text += ","; canComma = false; }
-        }
+        private void Comma(object sender, RoutedEventArgs e) {if (canComma) {block.Text += ","; canComma = false; }}
         private void ChangeSign(object sender, RoutedEventArgs e)
         {
-            if (block.Text.Length != 0 && (block.Text.Substring(block.Text.Length - 1) != "×" && block.Text.Substring(block.Text.Length - 1) != "÷" && block.Text.Substring(block.Text.Length - 1) != "-" && block.Text.Substring(block.Text.Length - 1) != "+" && block.Text.Substring(block.Text.Length - 1) != "%" && block.Text.Substring(block.Text.Length - 1) != "*" && block.Text.Substring(block.Text.Length - 1) != "/")) 
+            if (block.Text.Length != 0 && (block.Text.Substring(block.Text.Length - 1) != "×" && block.Text.Substring(block.Text.Length - 1) != "÷" && block.Text.Substring(block.Text.Length - 1) != "-" && block.Text.Substring(block.Text.Length - 1) != "+" && block.Text.Substring(block.Text.Length - 1) != "#" && block.Text.Substring(block.Text.Length - 1) != "√" && block.Text.Substring(block.Text.Length - 1) != "^")) 
             {
                 string temp = block.Text.Substring(canSign);
                 temp += "*(-1)";

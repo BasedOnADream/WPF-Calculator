@@ -1,7 +1,7 @@
 # WPF Calculator
 
-Basic calculator app made using Windows Presentation Forms(WPF) and C#.
+Calculator app made using Windows Presentation Forms(WPF) and C#.
 
-Nothing to say about it, it's worse than the one you have on your system but I think it's alright.
+Project uses [mXparser library](https://github.com/mariuszgromada/MathParser.org-mXparser) from Mariusz Gromada for calculations.
 
 ![preview](./WPFIndex/preview.png)

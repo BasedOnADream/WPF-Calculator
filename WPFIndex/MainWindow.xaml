@@ -5,9 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Icon="/Icon.png"
-        Title="Calculator" Height="500" Width="400" ResizeMode="NoResize" FontFamily="Arial" FontSize="32">
-    <Grid Background="Gray">
+        Title="Calculator" Height="500" Width="500" ResizeMode="CanMinimize" FontSize="32">
+    <Window.Resources>
+        <Style x:Key="Kanit">
+            <Setter Property="TextElement.FontFamily" Value="fonts/#Kanit-Regular"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#191f32" Style="{DynamicResource Kanit}">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -21,26 +27,173 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox IsReadOnly="True" Padding="10" Name="block" Grid.ColumnSpan="5" TextAlignment="Right" Background="WhiteSmoke" Margin="10" />
-        <Button Grid.Column="0" Grid.Row="1" Content="9" Click="NumberClick" />
-        <Button Grid.Column="1" Grid.Row="1" Content="8" Click="NumberClick" />
-        <Button Grid.Column="2" Grid.Row="1" Content="7" Click="NumberClick" />
-        <Button Grid.Column="0" Grid.Row="2" Content="6" Click="NumberClick" />
-        <Button Grid.Column="1" Grid.Row="2" Content="5" Click="NumberClick" />
-        <Button Grid.Column="2" Grid.Row="2" Content="4" Click="NumberClick" />
-        <Button Grid.Column="0" Grid.Row="3" Content="3" Click="NumberClick" />
-        <Button Grid.Column="1" Grid.Row="3" Content="2" Click="NumberClick" />
-        <Button Grid.Column="2" Grid.Row="3" Content="1" Click="NumberClick" />
-        <Button Grid.Column="1" Grid.Row="4" Content="0" Click="NumberClick" />
-        <Button Grid.Column="2" Grid.Row="4" Content="," Click="Comma" />
-        <Button Grid.Column="0" Grid.Row="4" Content="±" Click="ChangeSign" />
-        <Button Grid.Column="3" Grid.Row="1" Content="÷" Background="BlueViolet" Click="SignClick" />
-        <Button Grid.Column="3" Grid.Row="2" Content="×" Background="BlueViolet" Click="SignClick" />
-        <Button Grid.Column="3" Grid.Row="3" Content="-" Background="BlueViolet" Click="SignClick" />
-        <Button Grid.Column="3" Grid.Row="4" Content="+" Background="BlueViolet" Click="SignClick" />
-        <Button Grid.Column="2" Grid.Row="5" Background="ForestGreen" Content="=" Click="AddUp" />
-        <Button Grid.Column="1" Grid.Row="5" Background="Red" Content="C" Click="Clear" />
-        <Button Grid.Column="0" Grid.Row="5" Background="OrangeRed" Content="⌫" Click="Erase" />
-        <Button Grid.Column="3" Grid.Row="5" Content="%" Background="BlueViolet"  Click="SignClick" />
+        <TextBox IsReadOnly="True" Padding="10" Name="block" Grid.ColumnSpan="5" TextAlignment="Right" Text="" VerticalAlignment="Center" Margin="10" BorderThickness="0" Foreground="white" Background="#3b4664">
+            <TextBox.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Button Background="AntiqueWhite" Grid.Column="0" Grid.Row="1" Content="1"  BorderThickness="0" Margin="10" Click="NumberClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="1" Background="AntiqueWhite" Grid.Row="1" Margin="10"  BorderThickness="0" Content="2" Click="NumberClick">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="2" Background="AntiqueWhite" Grid.Row="1" Margin="10" BorderThickness="0" Content="3" Click="NumberClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="0" Background="AntiqueWhite" Grid.Row="2" Margin="10"  BorderThickness="0" Content="4" Click="NumberClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="1" Background="AntiqueWhite" Grid.Row="2" Margin="10"  BorderThickness="0" Content="5" Click="NumberClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="2" Background="AntiqueWhite" Grid.Row="2" Margin="10"  BorderThickness="0" Content="6" Click="NumberClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="0" Background="AntiqueWhite" Grid.Row="3" Margin="10"  BorderThickness="0" Content="7" Click="NumberClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="1" Background="AntiqueWhite" Grid.Row="3" Margin="10"  BorderThickness="0" Content="8" Click="NumberClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="2" Background="AntiqueWhite" Grid.Row="3" Margin="10"  BorderThickness="0" Content="9" Click="NumberClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="1" Background="AntiqueWhite" Grid.Row="4" Margin="10"  BorderThickness="0" Content="0" Click="NumberClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="2" Background="AntiqueWhite" Grid.Row="4" Margin="10"  BorderThickness="0"  Content="," Click="Comma" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="0" Background="AntiqueWhite" Grid.Row="4" Margin="10"  BorderThickness="0" Content="±" Click="ChangeSign" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="3" Grid.Row="1" Content="÷" Background="AntiqueWhite"  BorderThickness="0" Margin="10" Click="SignClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="3" Grid.Row="2" Content="×" Margin="10"  BorderThickness="0" Background="AntiqueWhite" Click="SignClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="3" Grid.Row="3" Content="-" Margin="10"  BorderThickness="0" Background="AntiqueWhite" Click="SignClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="3" Grid.Row="4" Content="+" Margin="10"  BorderThickness="0" Background="AntiqueWhite" Click="SignClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius"  Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="4" Grid.Row="3" Content="^" Margin="10"  BorderThickness="0" Background="AntiqueWhite" Click="SignClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius"  Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="4" Grid.Row="4" Content="√" Margin="10"  BorderThickness="0" Background="AntiqueWhite" Click="SignClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius"  Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="4" Grid.Row="5" Content="!" Margin="10"  BorderThickness="0" Background="AntiqueWhite" Click="SignClick" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius"  Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="2" Grid.Row="5" Background="#d13f30" BorderThickness="0" Grid.ColumnSpan="2" Foreground="white" Margin="10" Content="=" Click="AddUp" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="0" Grid.Row="5" Background="#647295" Grid.ColumnSpan="2"  BorderThickness="0" Foreground="White" Margin="10" Content="RESET" Click="Clear" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="4" Grid.Row="1" Background="#647295" BorderThickness="0" Margin="10" Foreground="White" Content="DEL" Click="Erase" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="4" Grid.Row="2" Content="#" Background="AntiqueWhite" Margin="10"  Click="SignClick">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>

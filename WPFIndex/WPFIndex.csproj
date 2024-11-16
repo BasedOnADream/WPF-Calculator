@@ -8,7 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="fonts\Kanit-Regular.ttf" />
     <None Remove="Icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MathParser.org-mXparser" Version="6.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="fonts\Kanit-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
